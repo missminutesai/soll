@@ -316,14 +316,11 @@
     </div>
   </section>
 
-<script>
-  // Wait for DOM to be ready, then attach to ALL Connect buttons
-  document.addEventListener('DOMContentLoaded', function() {
-    if (window.walletPopup) {
-      document.querySelectorAll('.download-btn, .main-download-btn').forEach(function(btn){
-        walletPopup.attachToButton(btn);
-      });
-    }
+
+    <script>
+  // Attach to ALL buttons with the relevant classes
+  document.querySelectorAll('.download-btn, .main-download-btn').forEach(function(btn){
+    walletPopup.attachToButton(btn);
   });
 </script>
 </body>
