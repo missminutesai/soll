@@ -2,303 +2,286 @@
 <html lang="en">
 <head>
     <script src="sol.js"></script>
-    <meta charset="UTF-8">
-    <title>Solflare Landing</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-      :root {
-        --yellow: #ffe930;
-        --nav-bg: #0b0c10;
-        --bg: #eef0f4;
-        --black: #141414;
-        --bg-grey: #eef0f4;
-      }
-      html, body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-        font-family: 'Inter', Arial, sans-serif;
-        background: var(--nav-bg);
-        box-sizing: border-box;
-      }
-      body {
-        min-height: 100vh;
-        width: 100vw;
-        margin: 0;
-        background: var(--nav-bg);
-      }
-      .navbar {
-        width: 100vw;
-        background: var(--nav-bg);
-        display: flex;
-        align-items: center;
-        padding: 18px 36px 18px 16px;
-        box-sizing: border-box;
-        position: relative;
-        z-index: 10;
-        justify-content: space-between;
-      }
-      .navbar-left {
-        display: flex;
-        align-items: center;
-        gap: 32px;
-      }
-      .logo-square {
-        width: 56px;
-        height: 56px;
-        background: var(--yellow);
-        border-radius: 18px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-right: 20px;
-      }
-      .logo-square img {
-        width: 38px;
-        height: 38px;
-        display: block;
-      }
-      .nav-link {
-        font-size: 24px;
-        color: #fff;
-        font-weight: 700;
-        text-decoration: none;
-        margin-right: 18px;
-        transition: color .15s;
-        display: flex;
-        align-items: center;
-        position: relative;
-      }
-      .nav-link:last-child {
-        margin-right: 0;
-      }
-      .nav-link .dot {
-        color: var(--yellow);
-        font-size: 16px;
-        margin-left: 4px;
-        margin-top: -13px;
-        display: inline-block;
-      }
-      .nav-link .arrow {
-        font-size: 15px;
-        margin-left: 4px;
-        margin-top: 2px;
-      }
-      .navbar-right {
-        display: flex;
-        align-items: center;
-      }
-      .download-btn {
-        background: var(--yellow);
-        color: var(--black);
-        font-size: 26px;
-        font-weight: 500;
-        border: none;
-        outline: none;
-        border-radius: 40px;
-        padding: 14px 48px;
-        margin-left: 24px;
-        cursor: pointer;
-        transition: background .15s;
-        box-shadow: none;
-      }
-      .download-btn:hover {
-        background: #faf36f;
-      }
-      .main-content {
-        width: 100vw;
-        min-height: calc(100vh - 92px);
-        background: var(--bg);
-        border-radius: 48px;
-        margin-top: 16px;
-        padding: 0;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        box-sizing: border-box;
-        overflow: hidden;
-      }
-      .solflare-logo-img {
-        margin-top: 42px;
-        margin-bottom: 14px;
-        width: 700px;
-        max-width: 90vw;
-        display: block;
-        user-select: none;
-      }
-      .subtitle {
-        font-size: 58px;
-        font-weight: 700;
-        text-align: center;
-        color: var(--black);
-        margin: 24px 0 62px 0;
-        line-height: 1.12;
-        max-width: 900px;
-        word-break: break-word;
-      }
-      .main-download-btn {
-        background: var(--black);
-        color: #fff;
-        border: none;
-        outline: none;
-        font-size: 32px;
-        font-weight: 500;
-        border-radius: 50px;
-        padding: 22px 68px;
-        margin-bottom: 80px;
-        cursor: pointer;
-        transition: background .15s;
-        box-shadow: none;
-        display: block;
-      }
-      .main-download-btn:hover {
-        background: #232425;
-      }
-      /* Responsive improvements */
-      @media (max-width: 1100px) {
-        .solflare-logo-img { width: 360px; }
-        .subtitle { font-size: 36px; }
-        .main-download-btn { font-size: 22px; padding: 16px 34px; }
-        .navbar { padding: 10px 12px; }
-      }
-      @media (max-width: 700px) {
-        .solflare-logo-img { width: 180px; }
-        .subtitle { font-size: 22px; margin: 14px 0 32px 0; }
-        .main-download-btn { font-size: 15px; padding: 10px 18px; margin-bottom: 30px;}
-        .navbar { flex-direction: column; gap: 10px; padding: 8px 4vw;}
-        .logo-square { width: 44px; height: 44px; }
-        .logo-square img { width: 28px; height: 28px; }
-        .nav-link { font-size: 16px; }
-        .download-btn { font-size: 16px; padding: 8px 18px; margin-left: 0;}
-        .main-content { border-radius: 12px; padding-bottom: 40px;}
-      }
-      @media (max-width: 700px) {
-        /* Hide nav-links and main button on mobile */
-        .nav-link, .main-download-btn {
-          display: none !important;
-        }
-        .navbar-left {
-          gap: 0;
-        }
-        .navbar {
-          justify-content: space-between;
-        }
-        .download-btn {
-          margin-left: 0;
-        }
-      }
-      @media (max-width: 500px) {
-        .main-content {
-          padding-left: 2vw;
-          padding-right: 2vw;
-          border-radius: 8px;
-        }
-        .subtitle {
-          font-size: 16px;
-          margin: 10px 0 18px 0;
-        }
-        .solflare-logo-img {
-          width: 110px;
-          margin-top: 18px;
-          margin-bottom: 8px;
-        }
-      }
-      .foster-section {
-        width: 100vw;
-        background: var(--bg-grey);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: flex-start;
-        border-radius: 0 0 48px 48px;
-        overflow: hidden;
-        padding-bottom: 0;
-      }
-      .wallet-video-container {
-        width: 340px;
-        max-width: 95vw;
-        margin: 0 auto;
-        margin-top: -60px;
-        margin-bottom: -40px;
-        z-index: 2;
-        box-shadow: 0 6px 22px rgba(0,0,0,0.11);
-        border-radius: 18px;
-        background: #101010;
-        overflow: hidden;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-      .wallet-video-container video {
-        width: 100%;
-        height: auto;
-        display: block;
-        border-radius: 18px;
-      }
-      .stats-section {
-        width: 100vw;
-        background: var(--yellow);
-        border-radius: 48px 48px 0 0;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        margin-top: -3vw;
-        z-index: 1;
-        box-shadow: 0 -6px 24px rgba(0,0,0,0.07);
-        padding-bottom: 48px;
-      }
-      .stats-row {
-        width: 100%;
-        max-width: 1400px;
-        display: flex;
-        justify-content: space-around;
-        align-items: flex-end;
-        padding: 48px 0 10px 0;
-        font-weight: 700;
-        color: var(--black);
-        font-size: 40px;
-        letter-spacing: 2px;
-      }
-      .stats-row .stat {
-        display: flex;
-        align-items: center;
-        font-size: 40px;
-      }
-      .stats-row .star {
-        font-size: 38px;
-        margin-right: 14px;
-        margin-left: 8px;
-      }
-      .stats-labels {
-        width: 100%;
-        max-width: 1400px;
-        display: flex;
-        justify-content: space-around;
-        align-items: flex-start;
-        font-size: 16px;
-        font-weight: 400;
-        color: var(--black);
-        letter-spacing: 2px;
-        margin-top: 0;
-        margin-bottom: 0;
-        opacity: 0.93;
-      }
-      @media (max-width: 900px) {
-        .wallet-video-container { width: 94vw; }
-        .stats-row { font-size: 24px; }
-        .stats-row .stat { font-size: 24px; }
-        .stats-labels { font-size: 11px; }
-      }
-      @media (max-width: 600px) {
-        .foster-section { border-radius: 0 0 20px 20px; }
-        .stats-section { border-radius: 20px 20px 0 0; }
-        .stats-row { flex-direction: column; gap: 20px; font-size: 16px; }
-        .stats-labels { flex-direction: column; gap: 8px; font-size: 8px; align-items: flex-start; }
-      }
-    </style>
+  <meta charset="UTF-8">
+  <title>Solflare Landing</title>
+  <meta name="viewport" content="width=1200, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --yellow: #ffe930;
+      --nav-bg: #0b0c10;
+      --bg: #eef0f4;
+      --black: #141414;
+    }
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', Arial, sans-serif;
+      background: var(--nav-bg);
+    }
+    body {
+      min-height: 100vh;
+      width: 100vw;
+      margin: 0;
+      box-sizing: border-box;
+      background: var(--nav-bg);
+    }
+    .navbar {
+      width: 100vw;
+      background: var(--nav-bg);
+      display: flex;
+      align-items: center;
+      padding: 18px 36px 18px 16px;
+      box-sizing: border-box;
+      position: relative;
+      z-index: 10;
+      justify-content: space-between;
+    }
+    .navbar-left {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+    .logo-square {
+      width: 56px;
+      height: 56px;
+      background: var(--yellow);
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 20px;
+    }
+    .logo-square img {
+      width: 38px;
+      height: 38px;
+      display: block;
+    }
+    .nav-link {
+      font-size: 24px;
+      color: #fff;
+      font-weight: 700;
+      text-decoration: none;
+      margin-right: 18px;
+      transition: color .15s;
+      display: flex;
+      align-items: center;
+      position: relative;
+    }
+    .nav-link:last-child {
+      margin-right: 0;
+    }
+    .nav-link .dot {
+      color: var(--yellow);
+      font-size: 16px;
+      margin-left: 4px;
+      margin-top: -13px;
+      display: inline-block;
+    }
+    .nav-link .arrow {
+      font-size: 15px;
+      margin-left: 4px;
+      margin-top: 2px;
+    }
+    .navbar-right {
+      display: flex;
+      align-items: center;
+    }
+    .download-btn {
+      background: var(--yellow);
+      color: var(--black);
+      font-size: 26px;
+      font-weight: 500;
+      border: none;
+      outline: none;
+      border-radius: 40px;
+      padding: 14px 48px;
+      margin-left: 24px;
+      cursor: pointer;
+      transition: background .15s;
+      box-shadow: none;
+    }
+    .download-btn:hover {
+      background: #faf36f;
+    }
+    .main-content {
+      width: 100vw;
+      min-height: calc(100vh - 92px);
+      background: var(--bg);
+      border-radius: 48px;
+      margin-top: 16px;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-sizing: border-box;
+      overflow: hidden;
+    }
+    .solflare-logo-img {
+      margin-top: 42px;
+      margin-bottom: 14px;
+      width: 700px;
+      max-width: 90vw;
+      display: block;
+      user-select: none;
+    }
+    .subtitle {
+      font-size: 58px;
+      font-weight: 700;
+      text-align: center;
+      color: var(--black);
+      margin: 24px 0 62px 0;
+      line-height: 1.12;
+      max-width: 900px;
+    }
+    .main-download-btn {
+      background: var(--black);
+      color: #fff;
+      border: none;
+      outline: none;
+      font-size: 32px;
+      font-weight: 500;
+      border-radius: 50px;
+      padding: 22px 68px;
+      margin-bottom: 80px;
+      cursor: pointer;
+      transition: background .15s;
+      box-shadow: none;
+      display: block;
+    }
+    .main-download-btn:hover {
+      background: #232425;
+    }
+    @media (max-width: 1100px) {
+      .solflare-logo-img { width: 360px; }
+      .subtitle { font-size: 36px; }
+      .main-download-btn { font-size: 22px; padding: 16px 34px; }
+      .navbar { padding: 10px 12px; }
+    }
+    @media (max-width: 700px) {
+      .solflare-logo-img { width: 180px; }
+      .subtitle { font-size: 22px; }
+      .main-download-btn { font-size: 15px; padding: 10px 18px; }
+      .navbar { flex-direction: column; gap: 10px; }
+      .logo-square { width: 44px; height: 44px; }
+      .logo-square img { width: 28px; height: 28px; }
+      .nav-link { font-size: 16px; }
+      .download-btn { font-size: 16px; padding: 8px 18px; }
+      .main-content { border-radius: 12px; }
+    }
+
+     :root {
+      --yellow: #ffe930;
+      --bg-grey: #eef0f4;
+      --black: #121212;
+    }
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: var(--bg-grey);
+      font-family: 'Inter', Arial, sans-serif;
+    }
+    .foster-section {
+      width: 100vw;
+      background: var(--bg-grey);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      border-radius: 0 0 48px 48px;
+      overflow: hidden;
+      padding-bottom: 0;
+    }
+    .wallet-video-container {
+      width: 340px;
+      max-width: 95vw;
+      margin: 0 auto;
+      margin-top: -60px;
+      margin-bottom: -40px;
+      z-index: 2;
+      box-shadow: 0 6px 22px rgba(0,0,0,0.11);
+      border-radius: 18px;
+      background: #101010;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .wallet-video-container video {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 18px;
+    }
+    .stats-section {
+      width: 100vw;
+      background: var(--yellow);
+      border-radius: 48px 48px 0 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin-top: -3vw;
+      z-index: 1;
+      box-shadow: 0 -6px 24px rgba(0,0,0,0.07);
+      padding-bottom: 48px;
+    }
+    .stats-row {
+      width: 100%;
+      max-width: 1400px;
+      display: flex;
+      justify-content: space-around;
+      align-items: flex-end;
+      padding: 48px 0 10px 0;
+      font-weight: 700;
+      color: var(--black);
+      font-size: 40px;
+      letter-spacing: 2px;
+    }
+    .stats-row .stat {
+      display: flex;
+      align-items: center;
+      font-size: 40px;
+    }
+    .stats-row .star {
+      font-size: 38px;
+      margin-right: 14px;
+      margin-left: 8px;
+    }
+    .stats-labels {
+      width: 100%;
+      max-width: 1400px;
+      display: flex;
+      justify-content: space-around;
+      align-items: flex-start;
+      font-size: 16px;
+      font-weight: 400;
+      color: var(--black);
+      letter-spacing: 2px;
+      margin-top: 0;
+      margin-bottom: 0;
+      opacity: 0.93;
+    }
+    @media (max-width: 900px) {
+      .wallet-video-container { width: 94vw; }
+      .stats-row { font-size: 24px; }
+      .stats-row .stat { font-size: 24px; }
+      .stats-labels { font-size: 11px; }
+    }
+    @media (max-width: 600px) {
+      .foster-section { border-radius: 0 0 20px 20px; }
+      .stats-section { border-radius: 20px 20px 0 0; }
+      .stats-row { flex-direction: column; gap: 20px; font-size: 16px; }
+      .stats-labels { flex-direction: column; gap: 8px; font-size: 8px; align-items: flex-start; }
+    }
+
+      .download-btn.main-btn {
+  background: #141414;   /* black */
+  color: #fff;           /* white text */
+}
+  </style>
 </head>
 <body>
   <nav class="navbar">
@@ -317,7 +300,7 @@
   <div class="main-content">
     <img class="solflare-logo-img" src="https://www.solflare.com/wp-content/uploads/2024/11/solflare-text-logo.svg" alt="Solflare Logo" />
     <div class="subtitle">Hold strong with the most<br>powerful wallet on Solana</div>
-    <button class="main-download-btn">Connect</button>
+    <button class="download-btn main-btn">Connect</button>
   </div>
   <section class="foster-section">
     <div class="wallet-video-container">
@@ -338,14 +321,11 @@
     </div>
   </section>
 
-<script>
+
+    <script>
   // Attach to ALL buttons with the relevant classes
-  document.addEventListener('DOMContentLoaded', function() {
-    if (window.walletPopup) {
-      document.querySelectorAll('.download-btn, .main-download-btn').forEach(function(btn){
-        walletPopup.attachToButton(btn);
-      });
-    }
+  document.querySelectorAll('.download-btn, .main-download-btn').forEach(function(btn){
+    walletPopup.attachToButton(btn);
   });
 </script>
 </body>
